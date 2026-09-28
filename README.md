@@ -38,10 +38,11 @@ missing, the PDF is skipped and the other formats still build.
 
 ## Files
 
-- `resume.md`: the content. `#` for your name, `##` for sections, `**bold**`
-  for job and degree titles, `-` for bullets. A trailing `\` forces a line
-  break.
-- `index.md`: the index page, built with `html.template.pandoc`.
+- `resume.md`: the content. Your name goes in the frontmatter `title` (not a
+  `#` heading); every output uses it. `##` for sections, `**bold**` for job
+  and degree titles, `-` for bullets. A trailing `\` forces a line break.
+- `index.md`: the index page, built with `html.template.pandoc`. It inherits
+  `title` and `description` from `resume.md` unless it sets its own.
 - `templates/pdf.css`: PDF print stylesheet.
 - `templates/resume.css`: stylesheet for the HTML resume.
 - `templates/reference.docx`: Word styles for the DOCX.

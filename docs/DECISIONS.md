@@ -102,6 +102,48 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 ---
 
+### DEC-008: Name lives only in frontmatter `title`; no H1 in resume.md (2026-09-28)
+
+**Status**: Active
+
+**Context**: With both a frontmatter `title` and a `# Name` heading, pandoc prints the name twice (title block plus H1) in HTML, PDF, and DOCX. Keeping only the H1 means build.sh would have to parse Markdown to get the name.
+
+**Decision**: The name is the frontmatter `title`, and `resume.md` has no H1. Pandoc renders it as `h1.title` in HTML/PDF, a Title paragraph in DOCX, and the first line of TXT (built with `--standalone`). The `Title` style in `templates/reference.docx` was restyled to match `Heading 1` (green, left-aligned, same size), so the DOCX looks the same as before.
+
+**Alternatives considered**: Keeping the H1 with a separate frontmatter `name` key (name stored twice); parsing the H1 in build.sh.
+
+**Consequences**: One place for the name. build.sh reads it with a `$title$` template and sets `pagetitle` to "Name - Resume". The resume's first heading in DOCX is Title rather than Heading 1.
+
+---
+
+### DEC-009: index.md inherits resume.md metadata (2026-09-28)
+
+**Status**: Active
+
+**Context**: The index page should show the person's name without storing it a second time.
+
+**Decision**: build.sh dumps resume.md's metadata as JSON (`$meta-json$` template, valid YAML) and passes it to the index build with `--metadata-file`. Values set in index.md's own frontmatter win.
+
+**Alternatives considered**: Duplicating title in index.md; passing `-M title=` (would override index.md).
+
+**Consequences**: index.md has no `title` by default, so `mimeo.template.json`'s current substitution (title key in index.md) needs rework in Phase 3.
+
+---
+
+### DEC-010: Resume HTML embeds its CSS (2026-09-28)
+
+**Status**: Active
+
+**Context**: resume-pipeline linked `templates/resume.css` by relative path, which does not exist inside `dist/` or `_site/`.
+
+**Decision**: Build `resume.html` with `--embed-resources`, so the file is self-contained.
+
+**Alternatives considered**: Copying the CSS into the output directory.
+
+**Consequences**: `resume.html` works when served or downloaded on its own.
+
+---
+
 ## Superseded/Deprecated
 
 None yet.
