@@ -2,7 +2,7 @@
 phase: 3
 phase_name: Mimeo integration and docs
 updated: 2026-09-28
-last_commit: 60ab1e0
+last_commit: 9127027
 ---
 
 ## Current Focus
@@ -17,7 +17,8 @@ Phases 1 and 2 are done. The workflow runs `./build.sh _site` but has not run on
 
 ## Blockers
 
-None.
+- Waiting on user: Mimeo substitution choice (see Context)
+- Waiting on user: which GitHub repo to push to for Phase 4 (scratch vs `tepiton/pandoc-resume` unregistered)
 
 ## Context
 
@@ -29,4 +30,4 @@ None.
 
 ## Next Session
 
-Start Phase 2 in `docs/IMPLEMENTATION.md`.
+Ask the user the two blocker questions. Options for Mimeo: `{domain}` into resume.md `title` as placeholder; `title: "{domain}"` back in index.md (my lean: site heading = domain, resume keeps the name); or no substitution. Then Phase 3, then Phase 4.
