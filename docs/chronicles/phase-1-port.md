@@ -20,3 +20,17 @@
 - DEC-010: embed CSS in resume.html
 
 **Files**: `build.sh`, `resume.md`, `index.md`, `templates/`, `.gitignore`, `README.md`
+
+## Entry 3: Workflow calls build.sh (2026-09-28)
+
+**What**: `pages.yml` installs pandoc and weasyprint from apt, runs `./build.sh _site`, and checks all five outputs exist.
+
+**Why**: CI and local builds share one script (DEC-003).
+
+**How**:
+
+- apt `pandoc weasyprint` on ubuntu-latest (24.04); no extra fonts (DEC-006)
+- Output check step makes a missing PDF fail the run instead of being skipped silently
+- Not yet run on GitHub; verification is Phase 4
+
+**Files**: `.github/workflows/pages.yml`

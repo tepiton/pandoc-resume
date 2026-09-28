@@ -6,7 +6,7 @@
 |---|---|---|
 | 0 | Planning | Complete |
 | 1 | Port the pipeline | Complete |
-| 2 | GitHub Action | Not Started |
+| 2 | GitHub Action | Complete (untested until Phase 4) |
 | 3 | Mimeo integration and docs | Not Started |
 | 4 | Verify and publish as template | Not Started |
 
@@ -43,10 +43,10 @@
 
 ### Tasks
 
-- [ ] Install pandoc and weasyprint in the workflow (`pip install weasyprint`; add Pango apt packages if required; no extra fonts)
-- [ ] Replace inline pandoc command with `./build.sh _site`
-- [ ] Confirm `_site/` contains index plus all four resume files
-- [ ] Consider a `workflow_dispatch` artifact upload of the built files
+- ✅ Install pandoc and weasyprint via apt (Ubuntu 24.04: pandoc 3.1.3; no extra fonts)
+- ✅ Replace inline pandoc command with `./build.sh _site`
+- ✅ Check step fails the run if any of the five outputs is missing (so a skipped PDF is caught)
+- Dropped: separate `workflow_dispatch` artifact upload; Pages already serves every file
 
 ## Phase 3: Mimeo integration and docs
 

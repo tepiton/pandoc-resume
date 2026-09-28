@@ -20,12 +20,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install pandoc
-        run: sudo apt-get install -y pandoc
-      - name: Build
+      - name: Install pandoc and weasyprint
         run: |
-          mkdir -p _site
-          pandoc index.md -o _site/index.html --template=html.template.pandoc --standalone -f gfm
+          sudo apt-get update
+          sudo apt-get install -y pandoc weasyprint
+      - name: Build
+        run: ./build.sh _site
+      - name: Check outputs
+        run: |
+          for f in index.html resume.html resume.pdf resume.docx resume.txt; do
+            test -s "_site/$f" || { echo "missing _site/$f"; exit 1; }
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

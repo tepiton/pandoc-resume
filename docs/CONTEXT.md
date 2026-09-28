@@ -1,19 +1,19 @@
 ---
-phase: 2
-phase_name: GitHub Action
+phase: 3
+phase_name: Mimeo integration and docs
 updated: 2026-09-28
-last_commit: 75ebb5d
+last_commit: 60ab1e0
 ---
 
 ## Current Focus
 
-Phase 1 is done: `./build.sh` builds index, HTML, PDF, DOCX, and TXT locally. Next is Phase 2: have `pages.yml` run `./build.sh _site`.
+Phases 1 and 2 are done. The workflow runs `./build.sh _site` but has not run on GitHub yet (Phase 4). Next is Phase 3: `mimeo.template.json` and README.
 
 ## Active Tasks
 
-- [ ] Workflow: install pandoc and weasyprint (no extra fonts, DEC-006)
-- [ ] Workflow: replace inline pandoc with `./build.sh _site`
-- [ ] Check apt pandoc version supports `--embed-resources` (pandoc >= 2.19); else install a pandoc release .deb
+- [ ] Decide what `mimeo.template.json` substitutes; index.md has no `title` now
+- [ ] Finish README (remove WIP note once verified)
+- [ ] Phase 4: push to a scratch repo and confirm the Action
 
 ## Blockers
 
