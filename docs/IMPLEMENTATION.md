@@ -73,6 +73,7 @@
 - ✅ Dark mode for the HTML resume
 - [ ] User sign-off that the template is finished
 - [ ] Set `is_template`, topics on `tepiton/pandoc-resume` (repo already exists)
+- ✅ Added to org profile README (`tepiton/.github` `profile/README.md`, 2347371)
 - [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)
 
 ## Future Phases
