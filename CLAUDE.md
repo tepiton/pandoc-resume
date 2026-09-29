@@ -22,8 +22,8 @@ and `docs/DECISIONS.md` (grep it) for why things are the way they are.
   `templates/pdf.css`; DOCX uses `templates/reference.docx`.
 - `build.sh [outdir]` is the one build entry point. The GitHub Action calls it
   (`./build.sh _site`); local builds call it too.
-- The PDF uses weasyprint. Built-in fonts are fine; do not install extra fonts
-  in CI.
+- The PDF uses weasyprint. CI installs Carlito (metric-compatible with
+  Calibri) so page breaks match local builds (DEC-012).
 - Sample content is a fictional resume (Wren Ashcombe, an artificer from an
   invented fantasy city) with `example.com` email and a 555-01xx phone number.
   Keep it fictional; no real people, employers, or schools (DEC-013).
