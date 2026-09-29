@@ -54,7 +54,8 @@ missing, the PDF is skipped and the other formats still build.
   address (set by Mimeo) and feeds the canonical link and `og:url`.
 - `templates/resume-header.lua`: builds the contact line and objective at the
   top of every resume format from the frontmatter.
-- `templates/index.lua`: adds file sizes to the index's download links.
+- `templates/index.lua`: adds file sizes to the index's download links and keeps
+  `url` a plain string.
 - `templates/pdf.css`: PDF print stylesheet.
 - `templates/resume.css`: stylesheet for the HTML resume.
 - `templates/reference.docx`: Word styles for the DOCX.
