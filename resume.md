@@ -1,14 +1,12 @@
 ---
 title: Wren Ashcombe
+objective: Resourceful and self-motivated recent graduate looking to start a career in clockwork automata and arcane engineering.
+email: wren.ashcombe@example.com
+phone: (555) 555-0142
+location: Vell, the Brass Coast
 description: Resume of Wren Ashcombe, artificer and clockwork engineer
 lang: en
 ---
-
-wren.ashcombe@example.com - (555) 555-0142
-
----
-
-Resourceful and self-motivated recent graduate looking to start a career in clockwork automata and arcane engineering.
 
 ## Education
 

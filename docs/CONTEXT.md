@@ -2,7 +2,7 @@
 phase: 4
 phase_name: Verify and publish as template
 updated: 2026-09-28
-last_commit: be11221
+last_commit: cc86553
 ---
 
 ## Current Focus
@@ -22,7 +22,7 @@ The template works end to end: the Action builds and deploys to https://tepiton.
 ## Context
 
 - Name is frontmatter `title` only; no H1 in resume.md (DEC-008)
-- Index heading = domain via Mimeo; resume name edited by hand (DEC-011)
+- Objective/contact are frontmatter keys rendered by `resume-header.lua` (DEC-014); index shows them, Mimeo sets index `url` (DEC-015)
 - CI installs Carlito so PDF page breaks match local Calibri (DEC-012)
 - Deployed index shows `pandoc-resume` placeholder because Mimeo did not create this repo
 - `mimeo create` verified on 002371.xyz; deploy race (stale pre-manifest commit deployed) is a Mimeo issue, fixed there by dispatching the workflow after the last commit

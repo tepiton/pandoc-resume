@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history so build.sh can date resume.md's last change
       - name: Install pandoc, weasyprint, and fonts
         run: |
           sudo apt-get update

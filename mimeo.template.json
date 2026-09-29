@@ -4,8 +4,8 @@
     {
       "file": "index.md",
       "format": "yaml-frontmatter-key",
-      "key": "title",
-      "value": "{domain}"
+      "key": "url",
+      "value": "https://{domain}/"
     }
   ]
 }

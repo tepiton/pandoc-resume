@@ -146,7 +146,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 ### DEC-011: Mimeo substitutes the domain into index.md title, not the resume name (2026-09-28)
 
-**Status**: Active
+**Status**: Superseded by DEC-015
 
 **Context**: `mimeo.template.json` targeted index.md `title`, which DEC-009 had removed; Mimeo's `yaml-frontmatter-key` handler fails the deploy if the key is missing. Mimeo's own DEC-024 limits substitution to the site's domain self-reference; names and bios are authoring, not Mimeo's job.
 
@@ -183,6 +183,34 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 **Alternatives considered**: Keeping Gil's resume (DEC-005); a generic "Your Name / Company" placeholder resume.
 
 **Consequences**: Gil's real resume lives in its own site repo, not the template. Sample content was trimmed slightly to stay at 2 pages.
+
+---
+
+### DEC-014: Objective and contact details are frontmatter keys (2026-09-28)
+
+**Status**: Active
+
+**Context**: The index should show the name, objective, and contact details. These lived in the resume body as a contact paragraph and an objective paragraph. The user ruled out extracting data from body text by position.
+
+**Decision**: `resume.md` frontmatter has `objective`, `email`, `phone`, `location` (and optional `website`). `templates/resume-header.lua` inserts the contact line (plain text, " - " separated), a rule, and the objective at the top of every resume format. The index template renders the same keys (objective as subtitle, email as a mailto link).
+
+**Alternatives considered**: A Lua filter reading the first paragraph after the rule (implicit convention); keeping the text in the body and duplicating it in frontmatter.
+
+**Consequences**: Resume outputs look the same as before. Anything new the index needs becomes a frontmatter key, never parsed from the body.
+
+---
+
+### DEC-015: Index shows the resume name; Mimeo sets `url` (2026-09-28)
+
+**Status**: Active
+
+**Context**: The user wants the index title to be the name and the subtitle the objective. Mimeo's manifest must still target a key that exists in index.md.
+
+**Decision**: index.md no longer sets `title` or `subtitle`; both come from resume.md (subtitle falls back to `objective` in the template). index.md has `url: "https://example.com/"`, which the manifest sets to `https://{domain}/`; the template emits it as `<link rel="canonical">` and `og:url`. The index is read with `-f gfm-autolink_bare_uris` so the URL stays a plain string.
+
+**Alternatives considered**: Dropping the manifest; a visible `site:` key.
+
+**Consequences**: The domain is used only for the site's own address, as Mimeo DEC-024 intends. Verified with Mimeo's `apply_substitutions`.
 
 ---
 

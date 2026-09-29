@@ -15,6 +15,10 @@ $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
 $endif$
 
+$if(url)$
+  <link rel="canonical" href="$url$">
+  <meta property="og:url" content="$url$">
+$endif$
 $if(title)$
   <meta property="og:title" content="$title$$if(subtitle)$ – $subtitle$$endif$">
   <meta property="og:type" content="article">
@@ -241,6 +245,25 @@ th {
   font-size: 1.2em;
 }
 
+.contact {
+  font-family: var(--font-heading);
+  margin-top: 1rem;
+}
+
+.contact a,
+.contact span {
+  white-space: nowrap;
+}
+
+.contact .sep {
+  color: var(--color-muted);
+}
+
+.file-size {
+  color: var(--color-muted);
+  font-size: 0.85em;
+}
+
 .author {
   font-family: var(--font-heading);
   color: var(--color-muted);
@@ -283,12 +306,22 @@ $if(title)$
 <h1 class="title">$title$</h1>
 $if(subtitle)$
 <p class="subtitle">$subtitle$</p>
+$elseif(objective)$
+<p class="subtitle">$objective$</p>
+$endif$
+$if(email)$
+<p class="contact"><a href="mailto:$email$">$email$</a>$if(phone)$ <span><span class="sep">·</span> $phone$</span>$endif$$if(location)$ <span><span class="sep">·</span> $location$</span>$endif$</p>
+$elseif(phone)$
+<p class="contact"><span>$phone$</span>$if(location)$ <span><span class="sep">·</span> $location$</span>$endif$</p>
 $endif$
 $for(author)$
 <p class="author">$author$</p>
 $endfor$
 $if(date)$
 <p class="date">$date$</p>
+$endif$
+$if(updated)$
+<p class="date">Updated $updated$</p>
 $endif$
 $if(abstract)$
 <div class="abstract">

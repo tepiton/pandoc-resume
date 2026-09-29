@@ -103,3 +103,24 @@
 - DEC-013: fictional sample resume
 
 **Files**: `resume.md`, `CLAUDE.md`, `docs/`
+
+## Entry 8: Richer index, frontmatter contact (2026-09-28)
+
+**What**: Index now shows the resume's name, objective, contact line, last-updated date, and file sizes. Objective and contact moved into resume.md frontmatter.
+
+**Why**: User wanted the index to present the person, with no data pulled from body text.
+
+**How**:
+
+- `resume-header.lua` renders contact line and objective in all four formats from frontmatter
+- `file-sizes.lua` appends sizes to index links (RESUME_OUTDIR)
+- `html.template.pandoc`: objective fallback subtitle, contact line, "Updated" date, canonical/og:url
+- Manifest now targets index.md `url`; `-f gfm-autolink_bare_uris` keeps it a string
+- Workflow checkout uses `fetch-depth: 0` for the git date; index checked at 375px in dark mode
+
+**Decisions**:
+
+- DEC-014: objective and contact as frontmatter keys
+- DEC-015: index title from resume; Mimeo sets `url` (supersedes DEC-011)
+
+**Files**: `resume.md`, `index.md`, `build.sh`, `html.template.pandoc`, `templates/*.lua`, `mimeo.template.json`, `.github/workflows/pages.yml`, `README.md`, `CLAUDE.md`, `docs/`

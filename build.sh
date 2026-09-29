@@ -35,7 +35,8 @@ else
 fi
 
 for f in "$SRC" "$INDEX" html.template.pandoc \
-         templates/reference.docx templates/pdf.css templates/resume.css; do
+         templates/reference.docx templates/pdf.css templates/resume.css \
+         templates/resume-header.lua templates/file-sizes.lua; do
   if [ -f "$f" ]; then
     echo "  [ok]      $f"
   else
@@ -58,7 +59,8 @@ trap 'rm -rf "$TMP"' EXIT
 
 # --- Metadata from resume.md frontmatter ------------------------------
 # NAME feeds the page/PDF title. meta.yaml lets index.md inherit the
-# resume's frontmatter (title, description, ...) unless it sets its own.
+# resume's frontmatter (title, objective, contact, ...) unless it sets
+# its own.
 printf '%s' '$title$' > "$TMP/title.tpl"
 printf '%s' '$meta-json$' > "$TMP/meta.tpl"
 NAME="$(pandoc "$SRC" -t plain --template="$TMP/title.tpl")"
@@ -70,6 +72,13 @@ if [ -z "$NAME" ]; then
 fi
 PAGETITLE="$NAME - Resume"
 
+# Date resume.md last changed in git (needs full history in CI), else today.
+UPDATED="$(git log -1 --format=%cd --date=format:'%B %-d, %Y' -- "$SRC" 2>/dev/null || true)"
+[ -n "$UPDATED" ] || UPDATED="$(date '+%B %-d, %Y')"
+
+# Contact line and objective come from frontmatter (resume-header.lua).
+HEADER=(--lua-filter=templates/resume-header.lua)
+
 mkdir -p "$OUTDIR"
 echo "Building from $SRC -> $OUTDIR/"
 
@@ -79,6 +88,7 @@ echo "Building from $SRC -> $OUTDIR/"
 if [ "$SKIP_PDF" -eq 0 ]; then
   pandoc "$SRC" \
     -o "$OUTDIR/resume.pdf" \
+    "${HEADER[@]}" \
     --pdf-engine=weasyprint \
     --css=templates/pdf.css \
     --metadata pagetitle="$PAGETITLE"
@@ -87,12 +97,14 @@ fi
 # --- DOCX (human-facing, styled; what most ATS actually parse best) ---
 pandoc "$SRC" \
   -o "$OUTDIR/resume.docx" \
+  "${HEADER[@]}" \
   --reference-doc=templates/reference.docx
 
 # --- Plain text (maximally ATS-safe fallback / paste-into-textarea) ---
 # --standalone so the name (frontmatter title) is included.
 pandoc "$SRC" \
   -o "$OUTDIR/resume.txt" \
+  "${HEADER[@]}" \
   --to=plain \
   --standalone \
   --wrap=none
@@ -101,18 +113,22 @@ pandoc "$SRC" \
 # CSS is embedded so the page is self-contained wherever it's served.
 pandoc "$SRC" \
   -o "$OUTDIR/resume.html" \
+  "${HEADER[@]}" \
   --standalone \
   --embed-resources \
   --metadata pagetitle="$PAGETITLE" \
   --css=templates/resume.css
 
 # --- Index page (links to the files above) ----------------------------
-pandoc "$INDEX" \
+# Built last so file-sizes.lua can measure the files it links to.
+RESUME_OUTDIR="$OUTDIR" pandoc "$INDEX" \
   -o "$OUTDIR/index.html" \
   --standalone \
   --template=html.template.pandoc \
   --metadata-file="$TMP/meta.yaml" \
-  -f gfm
+  --metadata updated="$UPDATED" \
+  --lua-filter=templates/file-sizes.lua \
+  -f gfm-autolink_bare_uris
 
 echo "Done. Files in $OUTDIR/:"
 ls -la "$OUTDIR"

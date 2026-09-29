@@ -6,9 +6,11 @@ publishes them to GitHub Pages behind an index page.
 
 ## How it works
 
-- `resume.md` holds the content, with YAML frontmatter for name and metadata.
-- `index.md` is the site's front page. It links to the four outputs and can be
-  customized freely.
+- `resume.md` holds the content. Name, objective, and contact details live in
+  its YAML frontmatter; the body holds the sections.
+- `index.md` is the site's front page. It shows the name, objective, contact
+  details, and last-updated date from `resume.md`, links to the four outputs
+  (with file sizes), and can be customized freely.
 - `build.sh` runs pandoc (and weasyprint for the PDF) and writes everything to
   an output directory.
 - On every push to `main`, the GitHub Actions workflow runs `./build.sh _site`
@@ -35,12 +37,25 @@ missing, the PDF is skipped and the other formats still build.
 
 ## Files
 
-- `resume.md`: the content. Your name goes in the frontmatter `title` (not a
-  `#` heading); every output uses it. `##` for sections, `**bold**` for job
-  and degree titles, `-` for bullets. A trailing `\` forces a line break.
-- `index.md`: the index page, built with `html.template.pandoc`. Its `title`
-  is the site's domain (set by Mimeo); other metadata such as `description`
-  comes from `resume.md` unless set here.
+- `resume.md`: the content. Frontmatter keys:
+
+  | Key | Used for |
+  |---|---|
+  | `title` | Your name (not a `#` heading); every output and the index |
+  | `objective` | One-line summary under the contact line; index subtitle |
+  | `email`, `phone`, `location`, `website` | Contact line (any subset) |
+  | `description` | Page description and link previews |
+  | `lang` | Document language |
+
+  In the body: `##` for sections, `**bold**` for job and degree titles, `-`
+  for bullets. A trailing `\` forces a line break.
+- `index.md`: the index page, built with `html.template.pandoc`. It inherits
+  the frontmatter above; set a key here to override it. `url` is the site's
+  address (set by Mimeo) and feeds the canonical link and `og:url`. Bare URLs
+  in its body are not auto-linked; write `<https://...>` or `[text](url)`.
+- `templates/resume-header.lua`: builds the contact line and objective at the
+  top of every resume format from the frontmatter.
+- `templates/file-sizes.lua`: adds file sizes to the index's download links.
 - `templates/pdf.css`: PDF print stylesheet.
 - `templates/resume.css`: stylesheet for the HTML resume.
 - `templates/reference.docx`: Word styles for the DOCX.

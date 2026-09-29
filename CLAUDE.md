@@ -14,10 +14,14 @@ and `docs/DECISIONS.md` (grep it) for why things are the way they are.
 
 ## Design (agreed)
 
-- `resume.md` is the single source of truth. It has YAML frontmatter
-  (name, contact, metadata). Everything else is generated from it.
+- `resume.md` is the single source of truth. Name (`title`), `objective`,
+  and contact keys live in YAML frontmatter; `templates/resume-header.lua`
+  renders them at the top of every format (DEC-014). Never pull data out of
+  the body text; if something is needed elsewhere, make it a frontmatter key.
 - `index.md` is a separate, customizable page that links to the four outputs
-  (HTML resume, PDF, DOCX, TXT). It is built with `html.template.pandoc`.
+  (HTML resume, PDF, DOCX, TXT). It is built with `html.template.pandoc`,
+  inherits resume.md's frontmatter, and shows name, objective, contact,
+  last-updated date, and file sizes. Mimeo sets its `url` key (DEC-015).
 - The resume HTML page is styled with `templates/resume.css`; PDF uses
   `templates/pdf.css`; DOCX uses `templates/reference.docx`.
 - `build.sh [outdir]` is the one build entry point. The GitHub Action calls it

@@ -69,6 +69,8 @@
 - ✅ `mimeo create 002371.xyz --template pandoc-resume` works: title substituted, dev files stripped, five files served (needed a manual workflow re-run; see Mimeo deploy race below)
 - [ ] Mimeo deploy race: out-of-order push events can leave Pages on a pre-manifest commit; fix belongs in Mimeo (dispatch workflow on main after last commit)
 - ✅ Replaced Gil's resume with a fictional sample (DEC-013)
+- ✅ Richer index: name, objective, contact, last-updated date, file sizes, canonical/og:url (DEC-014, DEC-015)
+- ✅ Dark mode for the HTML resume
 - [ ] User sign-off that the template is finished
 - [ ] Set `is_template`, topics on `tepiton/pandoc-resume` (repo already exists)
 - [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)
