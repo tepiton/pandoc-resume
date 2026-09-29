@@ -36,7 +36,7 @@ fi
 
 for f in "$SRC" "$INDEX" html.template.pandoc \
          templates/reference.docx templates/pdf.css templates/resume.css \
-         templates/resume-header.lua templates/file-sizes.lua; do
+         templates/resume-header.lua templates/index.lua; do
   if [ -f "$f" ]; then
     echo "  [ok]      $f"
   else
@@ -120,15 +120,15 @@ pandoc "$SRC" \
   --css=templates/resume.css
 
 # --- Index page (links to the files above) ----------------------------
-# Built last so file-sizes.lua can measure the files it links to.
+# Built last so index.lua can measure the files it links to.
 RESUME_OUTDIR="$OUTDIR" pandoc "$INDEX" \
   -o "$OUTDIR/index.html" \
   --standalone \
   --template=html.template.pandoc \
   --metadata-file="$TMP/meta.yaml" \
   --metadata updated="$UPDATED" \
-  --lua-filter=templates/file-sizes.lua \
-  -f gfm-autolink_bare_uris
+  --lua-filter=templates/index.lua \
+  -f gfm
 
 echo "Done. Files in $OUTDIR/:"
 ls -la "$OUTDIR"

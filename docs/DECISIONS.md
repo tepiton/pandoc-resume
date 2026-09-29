@@ -206,7 +206,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 **Context**: The user wants the index title to be the name and the subtitle the objective. Mimeo's manifest must still target a key that exists in index.md.
 
-**Decision**: index.md no longer sets `title` or `subtitle`; both come from resume.md (subtitle falls back to `objective` in the template). index.md has `url: "https://example.com/"`, which the manifest sets to `https://{domain}/`; the template emits it as `<link rel="canonical">` and `og:url`. The index is read with `-f gfm-autolink_bare_uris` so the URL stays a plain string.
+**Decision**: index.md no longer sets `title` or `subtitle`; both come from resume.md (subtitle falls back to `objective` in the template). index.md has `url: "https://example.com/"`, which the manifest sets to `https://{domain}/`; the template emits it as `<link rel="canonical">` and `og:url`. The index filter (`index.lua`) stringifies `url`, because the gfm reader auto-links bare URLs even in frontmatter; body autolinking stays on.
 
 **Alternatives considered**: Dropping the manifest; a visible `site:` key.
 

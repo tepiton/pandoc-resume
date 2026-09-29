@@ -51,11 +51,10 @@ missing, the PDF is skipped and the other formats still build.
   for bullets. A trailing `\` forces a line break.
 - `index.md`: the index page, built with `html.template.pandoc`. It inherits
   the frontmatter above; set a key here to override it. `url` is the site's
-  address (set by Mimeo) and feeds the canonical link and `og:url`. Bare URLs
-  in its body are not auto-linked; write `<https://...>` or `[text](url)`.
+  address (set by Mimeo) and feeds the canonical link and `og:url`.
 - `templates/resume-header.lua`: builds the contact line and objective at the
   top of every resume format from the frontmatter.
-- `templates/file-sizes.lua`: adds file sizes to the index's download links.
+- `templates/index.lua`: adds file sizes to the index's download links.
 - `templates/pdf.css`: PDF print stylesheet.
 - `templates/resume.css`: stylesheet for the HTML resume.
 - `templates/reference.docx`: Word styles for the DOCX.

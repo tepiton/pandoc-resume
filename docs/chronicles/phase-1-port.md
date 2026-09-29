@@ -113,9 +113,9 @@
 **How**:
 
 - `resume-header.lua` renders contact line and objective in all four formats from frontmatter
-- `file-sizes.lua` appends sizes to index links (RESUME_OUTDIR)
+- `index.lua` appends sizes to index links (RESUME_OUTDIR)
 - `html.template.pandoc`: objective fallback subtitle, contact line, "Updated" date, canonical/og:url
-- Manifest now targets index.md `url`; `-f gfm-autolink_bare_uris` keeps it a string
+- Manifest now targets index.md `url`; the index filter stringifies it (gfm auto-links URLs in frontmatter too)
 - Workflow checkout uses `fetch-depth: 0` for the git date; index checked at 375px in dark mode
 
 **Decisions**:
