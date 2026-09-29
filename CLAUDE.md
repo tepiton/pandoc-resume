@@ -24,8 +24,9 @@ and `docs/DECISIONS.md` (grep it) for why things are the way they are.
   (`./build.sh _site`); local builds call it too.
 - The PDF uses weasyprint. Built-in fonts are fine; do not install extra fonts
   in CI.
-- Sample content is Gil Borenstein's real resume (the reason this template
-  exists).
+- Sample content is a fictional resume (Wren Ashcombe, an artificer from an
+  invented fantasy city) with `example.com` email and a 555-01xx phone number.
+  Keep it fictional; no real people, employers, or schools (DEC-013).
 - ATS-safe constraints in `resume.md`: no tables, columns, or images for text;
   real `##` section headings; plain-text contact info (no markdown links).
 

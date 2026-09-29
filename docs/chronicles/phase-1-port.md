@@ -85,3 +85,21 @@
 - Race affects all templates; proposed Mimeo fix: dispatch the workflow on main after the final commit
 
 **Files**: `docs/`
+
+## Entry 7: Fictional sample resume (2026-09-28)
+
+**What**: Replaced Gil's resume in `resume.md` with a fictional one: Wren Ashcombe, artificer, invented fantasy schools and employers, `example.com` email, 555-01xx phone.
+
+**Why**: The template is public; real personal data should not ship in it.
+
+**How**:
+
+- Kept the same sections and bullet structure so layout is representative
+- First draft ran to 3 pages by one line; tightened three bullets to get back to 2
+- Updated `CLAUDE.md`; DEC-005 superseded
+
+**Decisions**:
+
+- DEC-013: fictional sample resume
+
+**Files**: `resume.md`, `CLAUDE.md`, `docs/`

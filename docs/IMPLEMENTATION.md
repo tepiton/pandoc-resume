@@ -68,6 +68,7 @@
 - ✅ CI PDF was 3 pages in Liberation Sans; fixed by installing Carlito (DEC-012); now 2 pages
 - ✅ `mimeo create 002371.xyz --template pandoc-resume` works: title substituted, dev files stripped, five files served (needed a manual workflow re-run; see Mimeo deploy race below)
 - [ ] Mimeo deploy race: out-of-order push events can leave Pages on a pre-manifest commit; fix belongs in Mimeo (dispatch workflow on main after last commit)
+- ✅ Replaced Gil's resume with a fictional sample (DEC-013)
 - [ ] User sign-off that the template is finished
 - [ ] Set `is_template`, topics on `tepiton/pandoc-resume` (repo already exists)
 - [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)

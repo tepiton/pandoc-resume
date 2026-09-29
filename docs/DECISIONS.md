@@ -62,7 +62,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 ### DEC-005: Sample content is Gil Borenstein's resume (2026-09-28)
 
-**Status**: Active
+**Status**: Superseded by DEC-013
 
 **Context**: The template exists for this resume.
 
@@ -169,6 +169,20 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 **Alternatives considered**: Tightening `pdf.css` spacing/size to fit Liberation Sans; accepting 3 pages.
 
 **Consequences**: CI PDF layout matches local Calibri output. One more small apt package.
+
+---
+
+### DEC-013: Fictional sample resume (2026-09-28)
+
+**Status**: Active
+
+**Context**: The template repo is public and generated sites start from its `resume.md`. Shipping a real person's name, email, phone, schools, and employers exposes personal data and has to be scrubbed by every user.
+
+**Decision**: The sample is a fictional artificer, Wren Ashcombe (gender-neutral name), from an invented fantasy setting: Collegium Mechanica of Vell, Brightwater Academy, and similar made-up institutions. Email is `wren.ashcombe@example.com`, phone `(555) 555-0142` (555-01xx is reserved for fiction). Section structure matches the original so layout and page count (2) are representative.
+
+**Alternatives considered**: Keeping Gil's resume (DEC-005); a generic "Your Name / Company" placeholder resume.
+
+**Consequences**: Gil's real resume lives in its own site repo, not the template. Sample content was trimmed slightly to stay at 2 pages.
 
 ---
 
