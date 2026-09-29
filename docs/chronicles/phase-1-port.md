@@ -124,3 +124,22 @@
 - DEC-015: index title from resume; Mimeo sets `url` (supersedes DEC-011)
 
 **Files**: `resume.md`, `index.md`, `build.sh`, `html.template.pandoc`, `templates/*.lua`, `mimeo.template.json`, `.github/workflows/pages.yml`, `README.md`, `CLAUDE.md`, `docs/`
+
+## Entry 9: Registered as a template (2026-09-29)
+
+**What**: Finished registration: topics, description, homepage on `tepiton/pandoc-resume`; row in `TEMPLATES/CLAUDE.md` (counts ten to eleven) and TEMPLATES `.gitignore`; entry in the org profile README.
+
+**Why**: User signed off on the template.
+
+**How**:
+
+- `gh repo edit` topics `pandoc, resume, mimeo, mimeo-template, template`; description fixed ("three flavors" to four formats)
+- `is_template` was already set by Mimeo's `_ensure_is_template`
+- No `TEMPLATES/README.md` exists; `CLAUDE.md` is the only template index there
+- Also in this stretch: dark mode for resume.html, richer index (Entry 8), gfm autolink fix via `index.lua`
+
+**Decisions**:
+
+- DEC-007 marked complete
+
+**Files**: `CLAUDE.md`, `docs/`; TEMPLATES `c6ed188`; tepiton/.github `2347371`

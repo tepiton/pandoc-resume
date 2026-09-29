@@ -1,6 +1,6 @@
 # pandoc-resume — Claude Instructions
 
-A Mimeo template (working name `tepiton/pandoc-resume`) that builds a resume
+A Mimeo template (`tepiton/pandoc-resume`) that builds a resume
 from a single Markdown file into HTML, PDF, DOCX, and TXT in a GitHub Action,
 and deploys them to GitHub Pages behind an index page.
 
@@ -36,9 +36,8 @@ and `docs/DECISIONS.md` (grep it) for why things are the way they are.
 
 ## Constraints
 
-- Do not add this template to `TEMPLATES/CLAUDE.md`, `TEMPLATES/README.md`, or
-  create the GitHub repo / `is_template` flag until the user says the template
-  is finished.
+- The template is registered (is_template, topics, `TEMPLATES/CLAUDE.md`, org
+  profile README). Changes that affect its description should update those too.
 - Shell scripts are bash. JavaScript conventions in the global CLAUDE.md do
   not apply here (no JS).
 - `mimeo.template.json` must substitute the title/name into `resume.md`

@@ -8,7 +8,7 @@
 | 1 | Port the pipeline | Complete |
 | 2 | GitHub Action | Complete |
 | 3 | Mimeo integration and docs | Complete |
-| 4 | Verify and publish as template | In Progress |
+| 4 | Verify and publish as template | Complete |
 
 ## Phase 0: Planning
 
@@ -71,10 +71,10 @@
 - ✅ Replaced Gil's resume with a fictional sample (DEC-013)
 - ✅ Richer index: name, objective, contact, last-updated date, file sizes, canonical/og:url (DEC-014, DEC-015)
 - ✅ Dark mode for the HTML resume
-- [ ] User sign-off that the template is finished
-- [ ] Set `is_template`, topics on `tepiton/pandoc-resume` (repo already exists)
+- ✅ User sign-off (2026-09-29)
+- ✅ `is_template` (set by Mimeo); topics `pandoc, resume, mimeo, mimeo-template, template`; description and homepage updated
 - ✅ Added to org profile README (`tepiton/.github` `profile/README.md`, 2347371)
-- [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)
+- ✅ Added to `TEMPLATES/CLAUDE.md` ("all eleven dirs") and TEMPLATES `.gitignore`; no `TEMPLATES/README.md` exists
 
 ## Future Phases
 

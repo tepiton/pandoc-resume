@@ -1,32 +1,30 @@
 ---
 phase: 4
 phase_name: Verify and publish as template
-updated: 2026-09-28
-last_commit: cc86553
+updated: 2026-09-29
+last_commit: 1b41459
 ---
 
 ## Current Focus
 
-The template works end to end: the Action builds and deploys to https://tepiton.com/pandoc-resume/ with all five files. Remaining work is registering it as a template, which waits on user sign-off.
+The template is finished and registered: repo is a GitHub template with topics, listed in `TEMPLATES/CLAUDE.md` and the org profile README. Live demo at https://tepiton.com/pandoc-resume/.
 
 ## Active Tasks
 
-- [ ] User sign-off that the template is finished
-- [ ] Set `is_template` and topics on `tepiton/pandoc-resume`
-- [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)
+- [ ] Mimeo deploy race (out-of-order push events deploy a pre-manifest commit). Fix belongs in Mimeo, not here; not started
 
 ## Blockers
 
-- Waiting on user sign-off (DEC-007)
+None.
 
 ## Context
 
-- Name is frontmatter `title` only; no H1 in resume.md (DEC-008)
-- Objective/contact are frontmatter keys rendered by `resume-header.lua` (DEC-014); index shows them, Mimeo sets index `url` (DEC-015)
-- CI installs Carlito so PDF page breaks match local Calibri (DEC-012)
-- Deployed index shows `pandoc-resume` placeholder because Mimeo did not create this repo
-- `mimeo create` verified on 002371.xyz; deploy race (stale pre-manifest commit deployed) is a Mimeo issue, fixed there by dispatching the workflow after the last commit
+- Name, objective, contact are frontmatter keys; `resume-header.lua` renders them in all formats (DEC-014)
+- Index inherits resume frontmatter; Mimeo sets index `url` (DEC-015); `index.lua` adds file sizes and stringifies `url`
+- CI installs Carlito so the PDF stays at 2 pages (DEC-012)
+- Sample resume is fictional (Wren Ashcombe; DEC-013)
+- Gil's real resume belongs in its own site repo, not this template
 
 ## Next Session
 
-Ask the user whether the template is finished. If yes, do the remaining Phase 4 tasks.
+Maintenance only. If the Mimeo race is picked up, work in `~/projects/mimeo`.

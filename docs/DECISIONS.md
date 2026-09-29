@@ -90,7 +90,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 ### DEC-007: Template is not registered until approved (2026-09-28)
 
-**Status**: Active
+**Status**: Complete (registered 2026-09-29)
 
 **Context**: The user wants to be happy with the template before it appears in the org docs.
 
