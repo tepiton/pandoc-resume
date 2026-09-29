@@ -76,7 +76,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 ### DEC-006: Default fonts, weasyprint in CI (2026-09-28)
 
-**Status**: Active
+**Status**: Superseded by DEC-012
 
 **Context**: `pdf.css` requests Carlito/Calibri/Arial. The user does not care about exact PDF fonts.
 
@@ -155,6 +155,20 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 **Alternatives considered**: No substitution (index heading = name inherited from resume.md); substituting the domain into resume.md `title` (outputs would show the domain as the name; contradicts Mimeo DEC-024).
 
 **Consequences**: Deploys succeed. Verified with Mimeo's `apply_substitutions` against a copy of the template, then a build: index shows `gilborenstein.com`.
+
+---
+
+### DEC-012: Install Carlito in CI (2026-09-28)
+
+**Status**: Active
+
+**Context**: First CI run (DEC-006, no extra fonts) rendered the PDF in Liberation Sans, which is wider than Calibri: 3 pages in CI vs 2 locally, with only "Hardware Systems" on page 3.
+
+**Decision**: Add `fonts-crosextra-carlito` (metric-compatible with Calibri) to the apt install. `pdf.css` already lists Carlito first.
+
+**Alternatives considered**: Tightening `pdf.css` spacing/size to fit Liberation Sans; accepting 3 pages.
+
+**Consequences**: CI PDF layout matches local Calibri output. One more small apt package.
 
 ---
 

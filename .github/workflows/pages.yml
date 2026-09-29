@@ -20,10 +20,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install pandoc and weasyprint
+      - name: Install pandoc, weasyprint, and fonts
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc weasyprint
+          sudo apt-get install -y pandoc weasyprint fonts-crosextra-carlito
       - name: Build
         run: ./build.sh _site
       - name: Check outputs
