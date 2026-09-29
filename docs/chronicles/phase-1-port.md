@@ -34,3 +34,21 @@
 - Not yet run on GitHub; verification is Phase 4
 
 **Files**: `.github/workflows/pages.yml`
+
+## Entry 4: Mimeo substitution resolved (2026-09-28)
+
+**What**: Restored `title` in index.md as a placeholder that Mimeo sets to the domain; resume name stays hand-edited.
+
+**Why**: Mimeo's frontmatter handler fails if the key is missing, and Mimeo DEC-024 limits substitution to the domain.
+
+**How**:
+
+- Read Mimeo's `template_manifest.py` and DEC-024
+- User chose "domain on index" over no substitution or domain-as-name
+- Verified with Mimeo's `apply_substitutions` on a copy, then built: index heading `gilborenstein.com`
+
+**Decisions**:
+
+- DEC-011: domain into index.md title
+
+**Files**: `index.md`, `README.md`, `docs/`

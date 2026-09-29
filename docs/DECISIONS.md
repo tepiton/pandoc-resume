@@ -126,7 +126,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 **Alternatives considered**: Duplicating title in index.md; passing `-M title=` (would override index.md).
 
-**Consequences**: index.md has no `title` by default, so `mimeo.template.json`'s current substitution (title key in index.md) needs rework in Phase 3.
+**Consequences**: index.md inherits description and lang. Its `title` is set in index.md itself for Mimeo (DEC-011), so the resume's name is not inherited as the index heading.
 
 ---
 
@@ -141,6 +141,20 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 **Alternatives considered**: Copying the CSS into the output directory.
 
 **Consequences**: `resume.html` works when served or downloaded on its own.
+
+---
+
+### DEC-011: Mimeo substitutes the domain into index.md title, not the resume name (2026-09-28)
+
+**Status**: Active
+
+**Context**: `mimeo.template.json` targeted index.md `title`, which DEC-009 had removed; Mimeo's `yaml-frontmatter-key` handler fails the deploy if the key is missing. Mimeo's own DEC-024 limits substitution to the site's domain self-reference; names and bios are authoring, not Mimeo's job.
+
+**Decision**: index.md keeps `title: "pandoc-resume"` as a placeholder; the manifest (unchanged) sets it to `{domain}`. The index heading reads the domain, subtitle "Resume". resume.md's `title` (the person's name) is edited by hand.
+
+**Alternatives considered**: No substitution (index heading = name inherited from resume.md); substituting the domain into resume.md `title` (outputs would show the domain as the name; contradicts Mimeo DEC-024).
+
+**Consequences**: Deploys succeed. Verified with Mimeo's `apply_substitutions` against a copy of the template, then a build: index shows `gilborenstein.com`.
 
 ---
 

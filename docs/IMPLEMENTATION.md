@@ -54,7 +54,7 @@
 
 ### Tasks
 
-- [ ] Update `mimeo.template.json`: index.md no longer has a `title` key (DEC-009); decide what Mimeo should substitute (`{domain}` is not a person's name)
+- ✅ Mimeo substitution: `{domain}` into index.md `title` (placeholder restored); manifest unchanged; verified with Mimeo's code (DEC-011)
 - [ ] Rewrite `README.md` (usage, file roles, ATS-safety rules from resume-pipeline)
 - [ ] Decide whether `html.template.pandoc` needs changes for the index page
 
