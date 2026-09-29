@@ -52,3 +52,22 @@
 - DEC-011: domain into index.md title
 
 **Files**: `index.md`, `README.md`, `docs/`
+
+## Entry 5: First deploy and font fix (2026-09-28)
+
+**What**: The user pushed to `tepiton/pandoc-resume`, enabled the workflow and Pages. The Action succeeded; the PDF was 3 pages in CI vs 2 locally.
+
+**Why**: Ubuntu runner lacked Calibri/Carlito; Liberation Sans is wider.
+
+**How**:
+
+- Checked all five deployed files (HTTP 200, correct types)
+- `pdffonts` showed Liberation Sans; added `fonts-crosextra-carlito` to apt install
+- Re-run: PDF is 2 pages in Carlito
+- Removed README WIP note
+
+**Decisions**:
+
+- DEC-012: install Carlito (supersedes DEC-006)
+
+**Files**: `.github/workflows/pages.yml`, `README.md`, `docs/`

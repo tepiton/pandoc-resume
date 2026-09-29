@@ -6,9 +6,9 @@
 |---|---|---|
 | 0 | Planning | Complete |
 | 1 | Port the pipeline | Complete |
-| 2 | GitHub Action | Complete (untested until Phase 4) |
-| 3 | Mimeo integration and docs | Not Started |
-| 4 | Verify and publish as template | Not Started |
+| 2 | GitHub Action | Complete |
+| 3 | Mimeo integration and docs | Complete |
+| 4 | Verify and publish as template | In Progress |
 
 ## Phase 0: Planning
 
@@ -55,8 +55,8 @@
 ### Tasks
 
 - ✅ Mimeo substitution: `{domain}` into index.md `title` (placeholder restored); manifest unchanged; verified with Mimeo's code (DEC-011)
-- [ ] Rewrite `README.md` (usage, file roles, ATS-safety rules from resume-pipeline)
-- [ ] Decide whether `html.template.pandoc` needs changes for the index page
+- ✅ Rewrite `README.md` (usage, file roles, ATS-safety rules from resume-pipeline)
+- ✅ `html.template.pandoc` used unchanged for the index page
 
 ## Phase 4: Verify and publish as template
 
@@ -64,9 +64,10 @@
 
 ### Tasks
 
-- [ ] Push to a scratch repo and confirm the Action builds and deploys, PDF renders, links work
+- ✅ Pushed to `tepiton/pandoc-resume`; Action builds and deploys to https://tepiton.com/pandoc-resume/; all five files serve with correct types
+- ✅ CI PDF was 3 pages in Liberation Sans; fixed by installing Carlito (DEC-012); now 2 pages
 - [ ] User sign-off that the template is finished
-- [ ] Create `tepiton/pandoc-resume`, set `is_template`, topics
+- [ ] Set `is_template`, topics on `tepiton/pandoc-resume` (repo already exists)
 - [ ] Add to `TEMPLATES/CLAUDE.md` and `TEMPLATES/README.md`; update "all templates" counts (ten to eleven)
 
 ## Future Phases

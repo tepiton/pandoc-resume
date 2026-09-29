@@ -4,9 +4,6 @@ A resume site built from one Markdown file. `resume.md` is the single source of
 truth; a GitHub Action renders it to HTML, PDF, DOCX, and plain text and
 publishes them to GitHub Pages behind an index page.
 
-Status: work in progress. The build script, templates, and workflow are being
-ported from `resume-pipeline` (see `docs/IMPLEMENTATION.md`).
-
 ## How it works
 
 - `resume.md` holds the content, with YAML frontmatter for name and metadata.
@@ -64,6 +61,8 @@ missing, the PDF is skipped and the other formats still build.
 ## Deploy
 
 Push to `main`. In the repository settings, set Pages source to GitHub Actions.
+The workflow installs pandoc, weasyprint, and the Carlito font (metric-compatible
+with Calibri) so the CI PDF has the same page breaks as a local build.
 
 ## Development documentation
 
