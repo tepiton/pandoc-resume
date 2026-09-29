@@ -56,7 +56,7 @@ Architectural decisions for this project. Search with `grep -i "keyword" docs/DE
 
 **Alternatives considered**: Dropping `html.template.pandoc` and styling everything with CSS only; using the template for the resume too.
 
-**Consequences**: Keeps the resume HTML identical to the existing pipeline output. May revisit if the two pages should look alike.
+**Consequences**: Keeps the resume HTML identical to the existing pipeline output. May revisit if the two pages should look alike. `resume.css` gained a `prefers-color-scheme: dark` variant (2026-09-28) using the same dark background/text colors as `html.template.pandoc`, so both pages follow the system theme.
 
 ---
 
