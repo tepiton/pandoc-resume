@@ -10,7 +10,7 @@ set it here. Edit freely; keep the links below so people can get the files.
 -->
 
 - [HTML (web page)](resume.html)
-- [PD](resume.pdf)
+- [PDF (print)](resume.pdf)
 - [DOCX (Word)](resume.docx)
 - [TXT (plain text)](resume.txt)
 
