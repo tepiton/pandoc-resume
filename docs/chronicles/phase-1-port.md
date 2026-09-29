@@ -71,3 +71,17 @@
 - DEC-012: install Carlito (supersedes DEC-006)
 
 **Files**: `.github/workflows/pages.yml`, `README.md`, `docs/`
+
+## Entry 6: mimeo create end-to-end (2026-09-28)
+
+**What**: User ran `mimeo create 002371.xyz --template pandoc-resume --force --yes`. Substitution and dev-file stripping worked; the live site first showed the placeholder title.
+
+**Why**: Mimeo's rapid commits each trigger a run; the `pages` concurrency group cancelled pending runs, and a late push event for pre-manifest commit `e959ff5` was the only run to finish. HEAD `56f68ac` was cancelled.
+
+**How**:
+
+- Manual `gh workflow run` on main deployed `56f68ac`; site now shows `002371.xyz`
+- Mimeo strips README, CLAUDE.md, docs/, mimeo.template.json from generated repos
+- Race affects all templates; proposed Mimeo fix: dispatch the workflow on main after the final commit
+
+**Files**: `docs/`

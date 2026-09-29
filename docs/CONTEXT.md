@@ -2,7 +2,7 @@
 phase: 4
 phase_name: Verify and publish as template
 updated: 2026-09-28
-last_commit: 353e22b
+last_commit: be11221
 ---
 
 ## Current Focus
@@ -25,7 +25,7 @@ The template works end to end: the Action builds and deploys to https://tepiton.
 - Index heading = domain via Mimeo; resume name edited by hand (DEC-011)
 - CI installs Carlito so PDF page breaks match local Calibri (DEC-012)
 - Deployed index shows `pandoc-resume` placeholder because Mimeo did not create this repo
-- Pages source is GitHub Actions; workflow was enabled by the user
+- `mimeo create` verified on 002371.xyz; deploy race (stale pre-manifest commit deployed) is a Mimeo issue, fixed there by dispatching the workflow after the last commit
 
 ## Next Session
 
