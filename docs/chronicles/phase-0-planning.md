@@ -2,7 +2,7 @@
 
 ## Entry 1: Design and tracking setup (2026-09-28)
 
-**What**: Reviewed `pandoc-simple` and `resume-pipeline`, agreed on a design, and created `CLAUDE.md` and the `docs/` tracking files.
+**What**: Reviewed `pandoc-simple` and [`resume-pipeline`](https://github.com/tepiton/resume-pipeline), agreed on a design, and created `CLAUDE.md` and the `docs/` tracking files.
 
 **Why**: Turn the resume pipeline into a Mimeo template built by a GitHub Action, without duplicating build logic.
 
